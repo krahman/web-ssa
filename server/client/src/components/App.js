@@ -7,7 +7,7 @@ import * as actions from '../actions';
 import Header from './Header';
 import Landing from './Landing';
 import Dashboard from './Dashboard';
-import SecretSantasNew from './secretSantas/SecretSantasNew';
+import SecretSantaNew from './secretSantas/SecretSantaNew';
 
 class App extends Component {
     componentDidMount() {
@@ -22,7 +22,7 @@ class App extends Component {
                         <Header/>
                         <Route exact={true} path="/" component={Landing}/>
                         <Route exact={true} path="/secret-santas" component={Dashboard}/>
-                        <Route path="/secret-santas/new" component={SecretSantasNew}/>
+                        <Route path="/secret-santas/new" component={SecretSantaNew}/>
                     </div>
                 </BrowserRouter>
             </div>
