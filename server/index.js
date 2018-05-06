@@ -10,6 +10,8 @@ const app = express();
 
 // Initialize user schema
 require('./models/User');
+require('./models/Santa');
+require('./models/SecretSanta');
 
 // Initialize passport config
 require('./services/passport');
@@ -24,7 +26,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Initialize server app routers
-require('./routes/auth')(app);
+require('./routes/authRoutes')(app);
+require('./routes/santaRoutes')(app);
 
 // Initialize mongodb connection
 mongoose.connect(KEYS.MONGO_URI);

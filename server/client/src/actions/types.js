@@ -1,1 +1,3 @@
 export const FETCH_USER = 'FETCH_USER';
+export const LOGOUT_USER = 'LOGOUT_USER';
+export const FETCH_SECRET_SANTA_LIST = 'FETCH_SECRET_SANTA_LIST';

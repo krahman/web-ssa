@@ -5,10 +5,9 @@ import {connect} from 'react-redux';
 import * as actions from '../actions';
 
 import Header from './Header';
-
-const Landing = () => <h2>Landing</h2>;
-const Dashboard = () => <h2>Dashboard</h2>;
-const SantasNew = () => <h2>New Santas</h2>;
+import Landing from './Landing';
+import Dashboard from './Dashboard';
+import SecretSantasNew from './secretSantas/SecretSantasNew';
 
 class App extends Component {
     componentDidMount() {
@@ -22,8 +21,8 @@ class App extends Component {
                     <div>
                         <Header/>
                         <Route exact={true} path="/" component={Landing}/>
-                        <Route exact={true} path="/santas" component={Dashboard}/>
-                        <Route path="/santas/new" component={SantasNew}/>
+                        <Route exact={true} path="/secret-santas" component={Dashboard}/>
+                        <Route path="/secret-santas/new" component={SecretSantasNew}/>
                     </div>
                 </BrowserRouter>
             </div>

@@ -1,34 +1,44 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
+import * as actions from '../actions';
 
-class Header extends Component{
-    renderContent(){
-        switch(this.props.auth) {
+class Header extends Component {
+    constructor() {
+        super();
+        this.onLogoutClick = this.onLogoutClick.bind(this);
+    }
+
+    renderContent() {
+        switch (this.props.auth) {
+            case '':
             case false:
                 return <li><a href="/auth/google">Sign In With Google</a></li>;
             default:
-                return <li><a href="/api/logout">Logout</a></li>;
+                return <li><Link to="/" onClick={this.onLogoutClick}>Logout</Link></li>;
         }
     }
 
-	render(){
-		return(
-			<div>
-                <nav>
-                    <div className="nav-wrapper">
-                        <a href="/" className="left brand-logo">Secret Santa</a>
-                        <ul id="nav-mobile" className="right hide-on-med-and-down">
-                            {this.renderContent()}
-                        </ul>
-                    </div>
-                </nav>
-			</div>
-		);
-	}
+    onLogoutClick() {
+        this.props.logoutUser();
+    }
+
+    render() {
+        return (
+            <nav>
+                <div className="nav-wrapper">
+                    <Link to="/" className="left brand-logo">Secret Santa</Link>
+                    <ul id="nav-mobile" className="right hide-on-med-and-down">
+                        {this.renderContent()}
+                    </ul>
+                </div>
+            </nav>
+        );
+    }
 }
 
 function mapStateToProps({auth}) {
-    return { auth };
+    return {auth};
 }
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, actions)(Header);
